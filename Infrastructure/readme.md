@@ -48,3 +48,16 @@ az group create --name urlshortener-dev --location westeurope
 ```psh
  az deployment group create --resource-group urlshortener-dev --template-file main.bicep 
 ```
+
+### Creation of user for Github actions
+
+```bash
+az ad sp create-for-rbac --name "GitHub-Actions-SP" --role contributor --scopes /subscriptions/2920ee69-c334-43a4-a0bd-e0e966a54d8f
+```
+
+#### Configure a federated identity credential on an app
+
+
+[Federated identity github / Azure deployment](https://github.com/AzureAD/microsoft-identity-web/wiki/Federated-Identity-Credential-(FIC)-with-a-Managed-Service-Identity-(MSI))
+
+[Microsoft Azure link](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-user-assigned-managed-identity?pivots=identity-wif-mi-methods-azp)
