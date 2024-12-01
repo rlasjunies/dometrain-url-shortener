@@ -9,10 +9,10 @@ on:
         branches:
             - main
         paths:
-            - infrastructure/**
+            - Infrastructure/**
     pull_request:
         paths:
-            - infrastructure/**
+            - Infrastructure/**
     workflow_dispatch: #manual trigger
 
 jobs:
@@ -41,4 +41,4 @@ jobs:
               uses: azure/arm-deploy@v2
               with:
                 resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
-                template: ./infrastructure/main.bicep
+                template: ./Infrastructure/main.bicep
