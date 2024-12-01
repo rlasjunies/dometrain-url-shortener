@@ -34,8 +34,8 @@ jobs:
     - name: upload artifact for deployment
       uses: actions/upload-artifact@v4
       with:
-        name:.net-app
-        path:${{env.DOTNET_ROOT}}/myapp
+        name: .net-app
+        path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy-dev:
     runs-on: ubuntu-latest
