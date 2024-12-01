@@ -61,3 +61,9 @@ az ad sp create-for-rbac --name "GitHub-Actions-SP" --role contributor --scopes 
 [Federated identity github / Azure deployment](https://github.com/AzureAD/microsoft-identity-web/wiki/Federated-Identity-Credential-(FIC)-with-a-Managed-Service-Identity-(MSI))
 
 [Microsoft Azure link](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-user-assigned-managed-identity?pivots=identity-wif-mi-methods-azp)
+
+#### Retrieve the AZURE_API_PUBLISH_PROFILE
+
+az webapp deployment list-publishing-profiles --name api-rixxremzmcmyw --resource-group urlshortener-dev --xml
+
+=> full result to be copies in the github secret
