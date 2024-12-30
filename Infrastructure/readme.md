@@ -1,5 +1,8 @@
 # Dometrain urm shortener build as you go
 
+> Azure portal  
+> [https://portal.azure.com/#home](https://portal.azure.com/#home)
+
 ## Infrastructure as Code
 
 ### Download Azure CLI
