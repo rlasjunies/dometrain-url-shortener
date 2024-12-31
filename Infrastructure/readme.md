@@ -25,7 +25,7 @@ az login
 In my case I have to:
 
 ```pws
-az login --tenant 2547a5f3-13ef-4878-88f0-fcd66e0ab8f71
+az login --tenant 2547a5f3-13ef-4878-88f0-fcd66e0ab8f7
 ```
 
 ### Create resource group
@@ -33,8 +33,6 @@ az login --tenant 2547a5f3-13ef-4878-88f0-fcd66e0ab8f71
 ```pws
 az group create --name urlshortener-dev --location westeurope
 ```
-
-> did it via the UI
 
 ### Create the resource in the resource group
 
@@ -70,3 +68,10 @@ az ad sp create-for-rbac --name "GitHub-Actions-SP" --role contributor --scopes 
 az webapp deployment list-publishing-profiles --name api-rixxremzmcmyw --resource-group urlshortener-dev --xml
 
 => full result to be copies in the github secret
+
+
+# 2024 12 31
+La creation des resource group automatiquement dans Azure, via az inline script, ne marche pas. Je suis obligé de créer les resource group à la main d'abord.
+Cela marche quand je fais la même commande à partir de pws dans vscode
+Est-ce qu'il faut passer par un autre version ??? 
+Est-ce qu'il faudrait créer les resource en utilisant un module bicep, dans le main.bicep? cela ferait un peu plus de sens d'ailleurs
