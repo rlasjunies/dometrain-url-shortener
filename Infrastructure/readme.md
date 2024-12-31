@@ -56,6 +56,14 @@ az group create --name urlshortener-dev --location westeurope
 az ad sp create-for-rbac --name "GitHub-Actions-SP" --role contributor --scopes /subscriptions/2920ee69-c334-43a4-a0bd-e0e966a54d8f
 ```
 
+### Apply to Custom contributor role
+
+```bash
+az ad sp create-for-rbac --name "GitHub-Actions-SP" --role "infra_deploy" --scopes /subscriptions/2920ee69-c334-43a4-a0bd-e0e966a54d8f --sdk-auth
+```
+
+
+
 #### Configure a federated identity credential on an app
 
 
