@@ -17,9 +17,9 @@ module apiService 'modules/compute/appservice.bicep' = {
     keyVaultName: keyVault.outputs.name
   }
 
-  dependsOn: [
-    keyVault
-  ]
+  // dependsOn: [
+  //   keyVault
+  // ]
 }
 
 module keyVaultRomleAssignment 'modules/secrets/key-vault-role-assignment.bicep' = {
@@ -30,9 +30,9 @@ module keyVaultRomleAssignment 'modules/secrets/key-vault-role-assignment.bicep'
       apiService.outputs.principalId
     ]
   }
-dependsOn:[
-  keyVault
-  apiService
-]
+// dependsOn:[
+//   keyVault
+//   apiService
+// ]
 
 }
