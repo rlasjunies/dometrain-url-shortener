@@ -18,6 +18,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2023-12-01' = {
 resource webApp 'Microsoft.Web/sites@2023-12-01' = {
   name: appName
   location: location
+//RL 2024 12 31 found by myself
   identity:{
     type:'SystemAssigned'
   }
@@ -44,12 +45,6 @@ resource webAppConfig 'Microsoft.Web/sites/config@2023-12-01' = {
   }
 }
 
-// resource authSettings 'Microsoft.Web/sites/config@2023-12-01' existing = {
-//   name: 'authsettingsV2'
-//   parent: webApp
-// }
-
 output appServiceId string = webApp.id
-// output principalId string = authSettings.properties.identityProviders.azureActiveDirectory.registration.clientId
-// output principalId string = authSettings.id
+//RL 2024 12 31 found by myself
 output principalId string = webApp.identity.principalId
