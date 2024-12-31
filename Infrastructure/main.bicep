@@ -30,9 +30,9 @@ module keyVaultRomleAssignment 'modules/secrets/key-vault-role-assignment.bicep'
       apiService.outputs.principalId
     ]
   }
-dependsOn:[
-  keyVault
-  apiService
-]
+// dependsOn:[
+//   keyVault
+//   apiService
+// ]
 
 }
