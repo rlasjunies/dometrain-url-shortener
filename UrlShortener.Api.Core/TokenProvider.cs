@@ -10,7 +10,8 @@ public class TokenProvider
         _end = tr.End;
     }
 
-    public long GetToken() {
+    public long GetToken()
+    {
         return _start;
     }
 
