@@ -51,7 +51,7 @@ public class AddUrlScenarios
 
         response.Succeeded.Should().BeFalse();
 
-        var expectedError = response.Error.Should().BeEquivalentTo(Errors.CreatedBy_have_to_be_defined);
+        var expectedError = response.Error.Should().BeEquivalentTo(Errors.CreatedByHaveToBeDefined);
 
     }
 

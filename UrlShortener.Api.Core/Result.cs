@@ -22,6 +22,7 @@ public class Result<TValue>
     }
 
     public bool Succeeded => _isSuccess;
+    public bool Failed => !_isSuccess;
     public TValue? Value => _value;
     public Error Error => _error;
 

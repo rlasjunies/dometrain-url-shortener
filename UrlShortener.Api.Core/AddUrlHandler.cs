@@ -22,7 +22,7 @@ public class AddUrlHandler
     public async Task<Result<AddUrlResponse>> HandleAsync(AddUrlRequest request, CancellationToken cancel)
     {
         if (string.IsNullOrEmpty(request.CreatedBy))
-            return Errors.CreatedBy_have_to_be_defined;
+            return Errors.CreatedByHaveToBeDefined;
 
         var shortenedUrl = new ShortenedUrl(
             request.LongUrl, 

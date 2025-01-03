@@ -7,6 +7,6 @@ public record Error(string Code, string Description)
 
 public static class Errors
 {
-    public static Error CreatedBy_have_to_be_defined => new Error("Missing_Created_by", "Created by must de provided");
+    public static Error CreatedByHaveToBeDefined => new Error("Missing_Created_by", "Created by must de provided");
 
 }
