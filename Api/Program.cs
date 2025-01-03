@@ -1,6 +1,4 @@
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 var keyVaultName = builder.Configuration["KeyVaultName"];
@@ -15,8 +13,10 @@ if (!string.IsNullOrEmpty(keyVaultName))
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton(TimeProvider.System);
-builder.Services.AddSingleton<IUrlDataStore, InMemoryUrlDataStore>();
-builder.Services.AddUrlFeature();
+//builder.Services.AddSingleton<IUrlDataStore, InMemoryUrlDataStore>();
+builder.Services
+    .AddUrlFeature()
+    .AddCosmosUrlDataStore(builder.Configuration);
 
 var app = builder.Build();
 
@@ -45,13 +45,3 @@ app.MapPost("/api/urls",
     });
 
 app.Run();
-
-
-internal class InMemoryUrlDataStore : Dictionary<string, ShortenedUrl>, IUrlDataStore
-{
-    public Task AddAsync(ShortenedUrl shortenedUrl, CancellationToken cancel)
-    {
-        Add(shortenedUrl.ShortUrl, shortenedUrl);
-        return Task.CompletedTask;
-    }
-}

@@ -2,5 +2,5 @@
 
 public interface IUrlDataStore
 {
-    Task AddAsync(ShortenedUrl shortenedUrl, CancellationToken cancel);
+    Task AddAsync(ShortenedUrl shortenedUrl, CancellationToken cancellationToken);
 }
