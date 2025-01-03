@@ -29,7 +29,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish ./UrlShortener.Api/ -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: upload artifact for deployment
       uses: actions/upload-artifact@v4

@@ -19,5 +19,17 @@ namespace UrlShortener.Api.Tests
 
 
         }
+
+        [Fact]
+        public async Task Home_page_should_return_hello_world()
+        {
+            var response = await _client.GetAsync("/");
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var addUrlResponse = await response.Content.ReadAsStringAsync();
+            addUrlResponse!.Should().Be("Hello, World!");
+
+
+        }
     }
 }

@@ -1,0 +1,20 @@
+// @Api_HostAddress = https://api-3thfunewfn3a4.azurewebsites.net
+@Api_HostAddress = https://api-rixxremzmcmyw.azurewebsites.net
+
+POST {{Api_HostAddress}}/api/urls
+Accept: application/json
+Content-Type: application/json
+
+{
+    "LongUrl": "https://dometrain.com"
+}
+
+###
+
+GET {{Api_HostAddress}}/swagger/V1/swagger.json
+Accept: application/json
+Content-Type: application/json
+
+{
+    "LongUrl": "https://dometrain.com"
+}
