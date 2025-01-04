@@ -37,7 +37,7 @@ app.MapPost("/api/urls",
             CreatedBy = "not empty"
         };
 
-        var result = await handler.HandleAsync(request, cancellationToken);
+        var result = await handler.HandleAsync(requestWithUser, cancellationToken);
 
         if (result.Failed) return Results.BadRequest(result.Error);
 
