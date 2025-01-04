@@ -1,6 +1,9 @@
-@UrlShortener.TokenRangeService_HostAddress = http://localhost:5150
+@UrlShortener.TokenRangeService_HostAddress = https://api-rixxremzmcmyw.azurewebsites.net
 
-GET {{UrlShortener.TokenRangeService_HostAddress}}/weatherforecast/
+//
+// Home page to return 'Hello world!'
+//
+GET {{UrlShortener.TokenRangeService_HostAddress}}/
 Accept: application/json
 
 ###
