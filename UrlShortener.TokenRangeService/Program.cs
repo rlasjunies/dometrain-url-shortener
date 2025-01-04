@@ -17,6 +17,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.MapGet("/weatherforecast", () => "TokenRangeService is alive!");
+app.MapGet("/", () => "TokenRangeService is alive!");
 
 app.Run();
