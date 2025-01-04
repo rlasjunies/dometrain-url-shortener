@@ -42,59 +42,59 @@ jobs:
         uses: azure/arm-deploy@v2
         with:
           resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
-          template: ./Infrastructure/main.bicep
+          template: ./Azure.Infrastructure/main.bicep
 
-  deploy-stg:
-    runs-on: ubuntu-latest
-    needs: deploy-dev
-    environment: Staging
-    steps:
-      - uses: actions/checkout@v4
-      - name: Azure login
-        uses: azure/login@v2.1.1
-        with:
-          client-id: ${{secrets.AZURE_APP_ID}}
-          tenant-id: ${{secrets.AZURE_TENANT_ID}}
-          subscription-id: ${{vars.AZURE_SUBSCRIPTION_ID}}
+  # deploy-stg:
+  #   runs-on: ubuntu-latest
+  #   needs: deploy-dev
+  #   environment: Staging
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Azure login
+  #       uses: azure/login@v2.1.1
+  #       with:
+  #         client-id: ${{secrets.AZURE_APP_ID}}
+  #         tenant-id: ${{secrets.AZURE_TENANT_ID}}
+  #         subscription-id: ${{vars.AZURE_SUBSCRIPTION_ID}}
 
-      - uses: Azure/CLI@v2
-        with:
-          inlineScript:
-            #!/bin/bash
-            echo "\n Azure resource group creation for ** Staging ** \n"
-            az group create --name ${{vars.RESOURCE_GROUP_NAME}} --location ${{vars.RESOURCE_GROUP_LOCATION}}
-            echo "\n Azure resource group for ** Staging ** created \n"
+  #     - uses: Azure/CLI@v2
+  #       with:
+  #         inlineScript:
+  #           #!/bin/bash
+  #           echo "\n Azure resource group creation for ** Staging ** \n"
+  #           az group create --name ${{vars.RESOURCE_GROUP_NAME}} --location ${{vars.RESOURCE_GROUP_LOCATION}}
+  #           echo "\n Azure resource group for ** Staging ** created \n"
 
-      - name: Deploy
-        uses: azure/arm-deploy@v2
-        with:
-          resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
-          template: ./Infrastructure/main.bicep
+  #     - name: Deploy
+  #       uses: azure/arm-deploy@v2
+  #       with:
+  #         resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
+  #         template: ./Infrastructure/main.bicep
 
-  deploy-prd:
-    runs-on: ubuntu-latest
-    needs: deploy-stg
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    environment: Production
-    steps:
-      - uses: actions/checkout@v4
-      - name: Azure login
-        uses: azure/login@v2.1.1
-        with:
-          client-id: ${{secrets.AZURE_APP_ID}}
-          tenant-id: ${{secrets.AZURE_TENANT_ID}}
-          subscription-id: ${{vars.AZURE_SUBSCRIPTION_ID}}
+  # deploy-prd:
+  #   runs-on: ubuntu-latest
+  #   needs: deploy-stg
+  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  #   environment: Production
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Azure login
+  #       uses: azure/login@v2.1.1
+  #       with:
+  #         client-id: ${{secrets.AZURE_APP_ID}}
+  #         tenant-id: ${{secrets.AZURE_TENANT_ID}}
+  #         subscription-id: ${{vars.AZURE_SUBSCRIPTION_ID}}
 
-      - uses: Azure/CLI@v2
-        with:
-          inlineScript:
-            #!/bin/bash
-            echo "Azure resource group creation"
-            az group create --name ${{vars.RESOURCE_GROUP_NAME}} --location ${{vars.RESOURCE_GROUP_LOCATION}}
-            echo "Azure resource group for ** Production ** created"
+  #     - uses: Azure/CLI@v2
+  #       with:
+  #         inlineScript:
+  #           #!/bin/bash
+  #           echo "Azure resource group creation"
+  #           az group create --name ${{vars.RESOURCE_GROUP_NAME}} --location ${{vars.RESOURCE_GROUP_LOCATION}}
+  #           echo "Azure resource group for ** Production ** created"
 
-      - name: Deploy
-        uses: azure/arm-deploy@v2
-        with:
-          resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
-          template: ./Infrastructure/main.bicep
+  #     - name: Deploy
+  #       uses: azure/arm-deploy@v2
+  #       with:
+  #         resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
+  #         template: ./Infrastructure/main.bicep
