@@ -29,8 +29,8 @@ jobs:
     - name: Build
       run: dotnet build ./UrlShortener.TokenRangeService/ --no-restore
 
-    - name: Test
-      # run: dotnet test --no-build --verbosity normal
+    # - name: Test
+    #   run: dotnet test --no-build --verbosity normal
 
     - name: dotnet publish
       run: dotnet publish ./UrlShortener.TokenRangeService/ -c Release -o ${{env.DOTNET_ROOT}}/tokenapp
