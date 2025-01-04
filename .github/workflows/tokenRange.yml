@@ -33,13 +33,13 @@ jobs:
     #   run: dotnet test --no-build --verbosity normal
 
     - name: dotnet publish
-      run: dotnet publish ./UrlShortener.TokenRangeService/ -c Release -o ${{env.DOTNET_ROOT}}/tokenapp
+      run: dotnet publish ./UrlShortener.TokenRangeService/ -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: upload artifact for deployment
       uses: actions/upload-artifact@v4
       with:
         name: .net-app
-        path: ${{env.DOTNET_ROOT}}/tokenapp
+        path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy-dev:
     runs-on: ubuntu-latest
