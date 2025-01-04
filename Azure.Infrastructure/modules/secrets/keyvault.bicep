@@ -9,9 +9,10 @@ resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
       name: 'standard'
       family: 'A'
     }
-    enableRbacAuthorization:true
+    enableRbacAuthorization: true
     tenantId: subscription().tenantId
   }
 }
+
 output id string = keyVault.id
 output name string = keyVault.name
