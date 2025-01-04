@@ -1,48 +1,49 @@
 name: Azure Deploy
 
+on: 
+ push: 
+  branches:
+   - main
+  paths:
+    - Azure.Infrastructure/**
+ pull_request:
+  branches:
+    - main
+  paths:
+    - Azure.Infrastructure/**
+ workflow_dispatch: # manual trigger
+
 permissions:
   id-token: write
   contents: read
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - Infrastructure/**
-  pull_request:
-    branches:
-      - main
-    paths:
-      - Infrastructure/**
-  workflow_dispatch: #manual trigger
-
 jobs:
-  deploy-dev:
-    runs-on: ubuntu-latest
-    environment: Development
-    steps:
-      - uses: actions/checkout@v4
-      - name: Azure login
-        uses: azure/login@v2.1.1
-        with:
-          client-id: ${{secrets.AZURE_APP_ID}}
-          tenant-id: ${{secrets.AZURE_TENANT_ID}}
-          subscription-id: ${{vars.AZURE_SUBSCRIPTION_ID}}
+ deploy-dev:
+  runs-on: ubuntu-latest
+  environment: Development
+  steps:
+    - uses: actions/checkout@v4
 
-      - uses: Azure/CLI@v2
-        with:
-          inlineScript:
-            #!/bin/bash
-            echo "\n Azure resource group creation \n "
-            az group create --name ${{vars.RESOURCE_GROUP_NAME}} --location ${{vars.RESOURCE_GROUP_LOCATION}}
-            echo "\n Azure resource group for ** Development ** created \n"
+    - name: Azure login
+      uses: azure/login@v2.1.1
+      with:
+        client-id: ${{ secrets.AZURE_APP_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy
-        uses: azure/arm-deploy@v2
-        with:
-          resourceGroupName: ${{vars.RESOURCE_GROUP_NAME}}
-          template: ./Azure.Infrastructure/main.bicep
+    - uses: Azure/CLI@v2
+      with:
+        inlineScript: |
+          #!/bin/bash
+          az group create --name ${{ vars.RESOURCE_GROUP_NAME }} --location ${{ vars.RESOURCE_GROUP_LOCATION }}
+          echo "Azure resource group created"
+
+    - name: Deploy  
+      uses: azure/arm-deploy@v2
+      with:
+        resourceGroupName: ${{ vars.RESOURCE_GROUP_NAME }}
+        template: ./Azure.Infrastructure/main.bicep
+        parameters: pgSqlPassword=${{ secrets.PG_SQL_PASSWORD }}
 
   # deploy-stg:
   #   runs-on: ubuntu-latest

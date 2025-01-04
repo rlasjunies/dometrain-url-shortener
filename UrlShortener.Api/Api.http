@@ -1,6 +1,19 @@
 // @Api_HostAddress = https://api-3thfunewfn3a4.azurewebsites.net
 @Api_HostAddress = https://api-rixxremzmcmyw.azurewebsites.net
 
+
+//
+// Home page to return 'Hello world!'
+//
+GET {{Api_HostAddress}}/
+Accept: application/json
+
+###
+
+
+//
+// /api/urls
+//
 POST {{Api_HostAddress}}/api/urls
 Accept: application/json
 Content-Type: application/json
