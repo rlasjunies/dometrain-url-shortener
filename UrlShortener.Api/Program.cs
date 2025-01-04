@@ -44,6 +44,6 @@ app.MapPost("/api/urls",
         return Results.Created($"/api/urls/{result.Value!.ShortUrl}", result.Value);
     });
 
-app.MapGet("/", () => "UrlShortener Hello, World!");
+app.MapGet("/", () => "UrlShortener - Hello World!");
 
 app.Run();

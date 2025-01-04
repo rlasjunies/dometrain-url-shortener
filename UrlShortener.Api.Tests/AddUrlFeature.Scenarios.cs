@@ -27,7 +27,7 @@ namespace UrlShortener.Api.Tests
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var addUrlResponse = await response.Content.ReadAsStringAsync();
-            addUrlResponse!.Should().Be("Hello, World!");
+            addUrlResponse!.Should().Be("UrlShortener - Hello World!");
 
 
         }
