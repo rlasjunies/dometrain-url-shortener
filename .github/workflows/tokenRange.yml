@@ -1,17 +1,17 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: API
+name: Token range
 
 on:
   push:
     branches: [ "main" ]
     paths:
-      - UrlShortener.Api/**
+      - UrlShortener.TokenRangeService/**
   pull_request:
     branches: [ "main" ]
     paths:
-      - UrlShortener.Api/**
+      - UrlShortener.TokenRangeService/**
 
 jobs:
   build:
@@ -27,19 +27,19 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./UrlShortener.TokenRangeService/ --no-restore
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    # - name: Test
+    #   run: dotnet test --no-build --verbosity normal
 
     - name: dotnet publish
-      run: dotnet publish ./UrlShortener.Api/ -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish ./UrlShortener.TokenRangeService/ -c Release -o ${{env.DOTNET_ROOT}}/tokenrangeapp
 
     - name: upload artifact for deployment
       uses: actions/upload-artifact@v4
       with:
         name: .net-app
-        path: ${{env.DOTNET_ROOT}}/myapp
+        path: ${{env.DOTNET_ROOT}}/tokenrangeapp
 
   deploy-dev:
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{vars.API_RESOURCE_NAME}}
+          app-name: ${{vars.TOKENRANGE_RESOURCE_NAME}}
           slot-name: 'Production'
-          publish-profile: ${{secrets.AZURE_API_PUBLISH_PROFILE}}
+          publish-profile: ${{secrets.AZURE_TOKENRANGE_PUBLISH_PROFILE}}
           package: .
