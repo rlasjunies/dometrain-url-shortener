@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.TokenRangeService", "UrlShortener.TokenRangeService\UrlShortener.TokenRangeService.csproj", "{7B7C0224-A2AD-4075-A33E-77AF14EA32F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtlShortener.TokenRangeService.Tests", "UtlShortener.TokenRangeService.Tests\UtlShortener.TokenRangeService.Tests.csproj", "{827C32A0-3065-4BFB-BC96-5679BA274AFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.TokenRangeService.Tests", "UtlShortener.TokenRangeService.Tests\UrlShortener.TokenRangeService.Tests.csproj", "{827C32A0-3065-4BFB-BC96-5679BA274AFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
