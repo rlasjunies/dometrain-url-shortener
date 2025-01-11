@@ -1,4 +1,7 @@
-﻿namespace UrlShortener.Api.Tests;
+﻿using UrlShortener.Api_;
+using UrlShortener.Tests.TestDoubles;
+
+namespace UrlShortener.Api.Tests;
 
 public class ApiFixture : WebApplicationFactory<IApiAssemblyMarker>
 {
@@ -10,6 +13,9 @@ public class ApiFixture : WebApplicationFactory<IApiAssemblyMarker>
             {
                 services.Remove<IUrlDataStore>();
                 services.AddSingleton<IUrlDataStore>(new InMemoryUrlDataStore());
+                services.Remove<ITokenRangeApiClient>();
+                services.AddSingleton<ITokenRangeApiClient, FakeTokenRangeApiClient>();
+
             });
         base.ConfigureWebHost(builder);
     }
