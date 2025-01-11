@@ -6,7 +6,7 @@ Accept: application/json
 ###
 
 
-GET {{UrlShortener.TokenRangeService_HostAddress}}/assign
+POST {{UrlShortener.TokenRangeService_HostAddress}}/assign
 Accept: application/json
 Content-Type: application/json
 
