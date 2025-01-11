@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.TokenRangeService", "UrlShortener.TokenRangeService\UrlShortener.TokenRangeService.csproj", "{7B7C0224-A2AD-4075-A33E-77AF14EA32F7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShortener.TokenRangeService.Tests", "UrlShortener.TokenRangeService.Tests\UrlShortener.TokenRangeService.Tests.csproj", "{827C32A0-3065-4BFB-BC96-5679BA274AFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{7B7C0224-A2AD-4075-A33E-77AF14EA32F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B7C0224-A2AD-4075-A33E-77AF14EA32F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B7C0224-A2AD-4075-A33E-77AF14EA32F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{827C32A0-3065-4BFB-BC96-5679BA274AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827C32A0-3065-4BFB-BC96-5679BA274AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827C32A0-3065-4BFB-BC96-5679BA274AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827C32A0-3065-4BFB-BC96-5679BA274AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

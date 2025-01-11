@@ -1,7 +1,6 @@
-@Api_HostAddress = https://token-range-service-rixxremzmcmyw.azurewebsites.net
+@Api_HostAddress = https://api-rixxremzmcmyw.azurewebsites.net
 
 
-//
 // Home page to return 'Hello world!'
 //
 GET {{Api_HostAddress}}/
@@ -9,3 +8,14 @@ Accept: application/json
 
 ###
 
+// /api/urls
+//
+POST {{Api_HostAddress}}/api/urls
+Accept: application/json
+Content-Type: application/json
+
+{
+    "LongUrl": "https://dometrain.com"
+}
+
+###
