@@ -1,9 +1,15 @@
-@UrlShortener.TokenRangeService_HostAddress = https://api-rixxremzmcmyw.azurewebsites.net
+@UrlShortener.TokenRangeService_HostAddress = https://token-range-service-rixxremzmcmyw.azurewebsites.net
 
-//
-// Home page to return 'Hello world!'
-//
 GET {{UrlShortener.TokenRangeService_HostAddress}}/
 Accept: application/json
 
 ###
+
+
+GET {{UrlShortener.TokenRangeService_HostAddress}}/assign
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Key": "machinekeyA1234"
+}
