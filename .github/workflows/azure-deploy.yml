@@ -44,6 +44,7 @@ jobs:
         resourceGroupName: ${{ vars.RESOURCE_GROUP_NAME }}
         template: ./Azure.Infrastructure/main.bicep
         parameters: pgSqlPassword=${{ secrets.PG_SQL_PASSWORD }}
+        additionalArguments: "--only-show-errors"
 
   # deploy-stg:
   #   runs-on: ubuntu-latest

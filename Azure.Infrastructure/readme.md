@@ -47,7 +47,7 @@ az group create --name urlshortener-dev --location westeurope
 
 #### What if
 
-```powershell
+```bash
 az deployment group what-if --resource-group urlshortener-dev --template-file ./infrastructure/main.bicep
 ```
 
